@@ -15,6 +15,7 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     @Override
     public void park(Car car){
+        System.out.println("This is super smart parking boy.");
         carInControl = car;
         Double maxAvailablePositionRate = (double) 0;
         Double calculateAvailablePositionRate;

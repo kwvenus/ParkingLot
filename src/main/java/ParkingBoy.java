@@ -47,9 +47,11 @@ public class ParkingBoy {
     }
 
     public void park(Car car){
+        System.out.println("This is parking boy.");
         carInControl = car;
-        ownedParkingLotList.forEach(parkingLot -> {
-            ownedParkingLot = parkingLot;
+
+        for (int i = 0; i < ownedParkingLotList.size(); i++){
+            ownedParkingLot = ownedParkingLotList.get(i);
 
             if (ownedParkingLot.getCapacity() <= ownedParkingLot.getSpaceOccupied()){
                 System.out.println("No space in parking lot. Park failure.");
@@ -69,18 +71,20 @@ public class ParkingBoy {
                 parkStatus = "Car parked.";
                 return;
             }
-        });
+        }
     }
 
     public void fetch(ParkingTicket parkingTicket){
         ticketOnHand = parkingTicket;
-        ownedParkingLotList.forEach(parkingLot -> {
-            ownedParkingLot = parkingLot;
+
+        for (int i = 0; i < ownedParkingLotList.size(); i++){
+            ownedParkingLot = ownedParkingLotList.get(i);
 
             if (ownedParkingLot.getTicketList().contains(ticketOnHand) && ticketOnHand.getTicketStatus() == "new" && ticketOnHand.getCar().getParkingTicket().equals(ticketOnHand)){
                 ownedParkingLot.setSpaceOccupied(ownedParkingLot.getSpaceOccupied() + 1);
                 ownedParkingLot.updateTicketStatus(ticketOnHand,"used");
                 System.out.println("Car fetched.");
+                fetchStatus = "Car fetched";
                 carInControl = ticketOnHand.getCar();
                 return;
             } else if (ticketOnHand.getTicketStatus() == "used"){
@@ -92,9 +96,10 @@ public class ParkingBoy {
             }
             if (ownedParkingLotList.lastIndexOf(ownedParkingLot) == ownedParkingLotList.size() -1 ){
                 ticketOnHand.updateTicketStatus("invalid");
+                fetchStatus = "Ticket invalid";
                 System.out.println("Ticket invalid.");
             }
-        });
+        }
     }
 
     public void fetch(){

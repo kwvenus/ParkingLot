@@ -15,6 +15,7 @@ public class SmartParkingBoy extends ParkingBoy {
 
     @Override
     public void park(Car car){
+        System.out.println("This is smart parking boy.");
         carInControl = car;
         int maxSpaceLeft = 0;
         int spaceLeft;

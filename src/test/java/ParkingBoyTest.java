@@ -16,6 +16,8 @@ public class ParkingBoyTest {
     ParkingLot parkingLot1 = new ParkingLot(20, parkingTicketList, 20);
     ParkingLot parkingLot2 = new ParkingLot(20, parkingTicketList, 10);
 
+    SuperSmartParkingBoy superSmartParkingBoy;
+    ArrayList<ParkingBoy> parkingBoyArrayList = new ArrayList<>();
 
     //##################### Story 1 #####################
 
@@ -184,9 +186,9 @@ public class ParkingBoyTest {
         smartParkingBoy.park(expectedCar);
         expectedParkingTicket = smartParkingBoy.getTicketOnHand();
 
-        System.out.println(parkingLot2);
-        System.out.println(parkingLot1);
-        System.out.println(expectedParkingTicket.getParkingLot());
+//        System.out.println(parkingLot2);
+//        System.out.println(parkingLot1);
+//        System.out.println(expectedParkingTicket.getParkingLot());
 
         assertEquals(parkingLot2, expectedParkingTicket.getParkingLot());
 
@@ -217,4 +219,88 @@ public class ParkingBoyTest {
     }
 
     //##################### Story 5 #####################
+
+    //##################### Story 6 #####################
+
+    @Test
+    public void managerAssignJob(){
+        // AC1: Given car to be parked, parkingManager, when assignJob, then return ticket
+        parkingLot1 = new ParkingLot(30, parkingTicketList, 15);
+        parkingLot2 = new ParkingLot(20, parkingTicketList, 10);
+        setUpTestforStory3();
+
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotArrayList);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotArrayList);
+
+        ArrayList<ParkingBoy> parkingBoyArrayList = new ArrayList<>();
+        parkingBoyArrayList.add(superSmartParkingBoy);
+        parkingBoyArrayList.add(smartParkingBoy);
+
+        ParkingManager parkingManager = new ParkingManager(parkingBoyArrayList,parkingLotArrayList);
+        parkingManager.assignParkJob(expectedCar);
+        expectedParkingTicket = parkingManager.ticketOnHand;
+
+//        System.out.println(parkingLot2);
+//        System.out.println(parkingLot1);
+//        System.out.println(expectedParkingTicket.getParkingLot());
+
+        assertEquals(parkingLot1,expectedParkingTicket.getParkingLot());
+    }
+
+    public void setUpTestForStory6(){
+        parkingLot1 = new ParkingLot(30, parkingTicketList, 20);
+        parkingLot2 = new ParkingLot(20, parkingTicketList, 10);
+        setUpTestforStory3();
+
+        superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotArrayList);
+        parkingBoyArrayList.add(superSmartParkingBoy);
+
+        ArrayList<ParkingLot> parkingBoyArrayListForManager = new ArrayList<>();
+        parkingBoyArrayListForManager.add(parkingLot1);
+    }
+
+    @Test void managerParkCar(){
+        // AC1: Given parking Manager, car to be parked, when assignParkJob to manager, manager will change to be parking joy, park the car and return the ticket
+        setUpTestForStory6();
+        ParkingManager parkingManager = new ParkingManager(parkingBoyArrayList,parkingLotArrayList);
+        parkingManager.assignParkJob(expectedCar);
+
+        if (parkingManager.getParkingBoyAssigned() == superSmartParkingBoy){
+            assertEquals(parkingLot2,superSmartParkingBoy.getTicketOnHand().getParkingLot());
+        }else {
+            //Target test: when assigned to parking manager
+            assertEquals(parkingLot1,parkingManager.getParkingBoyAssigned().getTicketOnHand().getParkingLot());
+        }
+    }
+
+    @Test
+    public void managerFetchCar(){
+        //AC2: Given parking Manager, parking ticket, when assignFetchJob to manager, then manager will change to be parking boy, and fetch the car from parking lot 1
+        setUpTestForStory6();
+
+        parkingBoyArrayList.remove(superSmartParkingBoy);
+        ParkingManager parkingManager = new ParkingManager(parkingBoyArrayList,parkingLotArrayList);
+        parkingManager.assignParkJob(expectedCar);
+
+        parkingManager.assignFetchJob(parkingManager.getTicketOnHand());
+
+        assertEquals(expectedCar,parkingManager.getParkingBoyAssigned().getCarInControl());
+
+    }
+
+    @Test
+    public void assignFetchJobFailure(){
+        //AC3: Given parking manager, used parking ticket, when assignFetchJob, then manager will return operation failure with the reason passes from parking boy
+        setUpTestForStory6();
+
+        ParkingManager parkingManager = new ParkingManager(parkingBoyArrayList,parkingLotArrayList);
+        parkingManager.assignParkJob(expectedCar);
+        parkingManager.assignFetchJob(parkingManager.getTicketOnHand());
+
+        parkingManager.assignFetchJob(parkingManager.getTicketOnHand());
+
+        assertEquals("This is parking manager. Fetch car failure due to reason: Unrecognized parking ticket.",parkingManager.getErrorMessageFromManager());
+    }
+
+    //##################### Story 6 #####################
 }
