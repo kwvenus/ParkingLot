@@ -10,6 +10,8 @@ public class ParkingBoyTest {
     ParkingTicket expectedParkingTicket;
 
 
+    //##################### Story 1 #####################
+
     public void setUpTestforStory1(){
         expectedCar = new Car();
         expectedParkingBoy = new ParkingBoy();
@@ -93,4 +95,47 @@ public class ParkingBoyTest {
 
         assertNull(expectedParkingTicket);
     }
+
+    //##################### Story 1 #####################
+
+    //##################### Story 2 #####################
+
+    @Test
+    public void returnCorrectMessgaeWhenFetchWithWrongTicket(){
+        //AC1: Given parkingBoy, used ticket, when fetch, then return "Unrecognized parking ticket."
+        setUpTestforStory1();
+
+        ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"used");
+        expectedParkingBoy.fetch(parkingTicket);
+
+        assertEquals("Unrecognized parking ticket.",expectedParkingBoy.getFetchStatus());
+
+    }
+
+    @Test
+    public void returnCorrectMessgaeWhenFetchWithNoTicket(){
+        //AC2: Given parkingBoy, when fetch, then return "Unrecognized parking ticket."
+        setUpTestforStory1();
+
+        ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"used");
+        expectedParkingBoy.fetch();
+
+        assertEquals("Please provide your parking ticket.",expectedParkingBoy.getFetchStatus());
+
+    }
+
+    @Test
+    public void returnCorrectMessageWhenParkWithNoPosition(){
+        //AC3: Given parkingBoy, car, parkingLot with no position, when park, then return "Not enough position."
+        setUpTestforStory1();
+
+        expectedCar = new Car();
+        expectedParkingBoy = new ParkingBoy(20,20);
+
+        expectedParkingBoy.park(expectedCar);
+
+        assertEquals("Not enough position.",expectedParkingBoy.getParkStatus());
+
+    }
+    //##################### Story 2 #####################
 }

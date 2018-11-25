@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4921c8f4-d982-425a-a6cc-2520c5c0363c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ParkingBoy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ParkingBoy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ParkingBoyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ParkingBoyTest.java" afterDir="false" />
     </list>
@@ -25,23 +24,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ParkingLot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="228">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
-                <element signature="e#475#476#0" expanded="true" />
                 <element signature="e#508#509#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/ParkingBoyTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-888">
-              <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,16 +68,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ParkingBoy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+            <state relative-caret-position="418">
+              <caret line="57" column="39" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
               <folding>
                 <element signature="e#699#700#0" expanded="true" />
                 <element signature="e#734#735#0" expanded="true" />
                 <element signature="e#881#882#0" expanded="true" />
                 <element signature="e#916#917#0" expanded="true" />
+                <element signature="e#1053#1054#0" expanded="true" />
+                <element signature="e#1087#1088#0" expanded="true" />
+                <element signature="e#1224#1225#0" expanded="true" />
+                <element signature="e#1257#1258#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ParkingBoyTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2641">
+              <caret line="139" column="45" selection-start-line="139" selection-start-column="45" selection-end-line="139" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,8 +121,8 @@
         <option value="$PROJECT_DIR$/src/main/java/ParkingLot.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkingTicket.java" />
         <option value="$PROJECT_DIR$/src/main/java/Car.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ParkingBoyTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ParkingBoy.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ParkingBoyTest.java" />
       </list>
     </option>
   </component>
@@ -182,7 +184,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543128421024" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543133406219" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
@@ -236,11 +238,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ParkingBoyTest.park" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ParkingBoyTest.returnCorrectMessageWhenParkWithNoPosition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="com.tatp.oocl.com.tatp.oocl.test" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ParkingBoyTest" />
-      <option name="METHOD_NAME" value="park" />
+      <option name="METHOD_NAME" value="returnCorrectMessageWhenParkWithNoPosition" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ParkingBoyTest.returnCorrectMessgaeWhenFetchWithWrongTicket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="com.tatp.oocl.com.tatp.oocl.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ParkingBoyTest" />
+      <option name="METHOD_NAME" value="returnCorrectMessgaeWhenFetchWithWrongTicket" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -249,9 +261,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ParkingBoyTest" />
+        <item itemvalue="JUnit.ParkingBoyTest.returnCorrectMessageWhenParkWithNoPosition" />
+        <item itemvalue="JUnit.ParkingBoyTest.returnCorrectMessgaeWhenFetchWithWrongTicket" />
         <item itemvalue="JUnit.ParkingBoyTest.invalidFetch" />
         <item itemvalue="JUnit.ParkingBoyTest.fetch" />
-        <item itemvalue="JUnit.ParkingBoyTest.park" />
       </list>
     </recent_temporary>
   </component>
@@ -269,34 +282,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ParkingBoyTest_invalidFetch - 2018.11.25 at 13h 39m 19s.xml">
-      <configuration name="ParkingBoyTest.invalidFetch" configurationId="JUnit" />
+    <history-entry file="ParkingBoyTest_returnCorrectMessgaeWhenFetchWithWrongTicket - 2018.11.25 at 15h 36m 14s.xml">
+      <configuration name="ParkingBoyTest.returnCorrectMessgaeWhenFetchWithWrongTicket" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParkingBoyTest_invalidFetch - 2018.11.25 at 13h 39m 52s.xml">
-      <configuration name="ParkingBoyTest.invalidFetch" configurationId="JUnit" />
+    <history-entry file="ParkingBoyTest_returnCorrectMessgaeWhenFetchWithWrongTicket - 2018.11.25 at 15h 45m 25s.xml">
+      <configuration name="ParkingBoyTest.returnCorrectMessgaeWhenFetchWithWrongTicket" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParkingBoyTest_invalidFetch - 2018.11.25 at 13h 41m 03s.xml">
-      <configuration name="ParkingBoyTest.invalidFetch" configurationId="JUnit" />
+    <history-entry file="ParkingBoyTest_returnCorrectMessgaeWhenFetchWithWrongTicket - 2018.11.25 at 15h 52m 51s.xml">
+      <configuration name="ParkingBoyTest.returnCorrectMessgaeWhenFetchWithWrongTicket" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParkingBoyTest - 2018.11.25 at 13h 43m 07s.xml">
+    <history-entry file="ParkingBoyTest - 2018.11.25 at 15h 54m 14s.xml">
       <configuration name="ParkingBoyTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParkingBoyTest_invalidFetch - 2018.11.25 at 13h 53m 58s.xml">
-      <configuration name="ParkingBoyTest.invalidFetch" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ParkingBoyTest - 2018.11.25 at 13h 54m 36s.xml">
+    <history-entry file="ParkingBoyTest - 2018.11.25 at 15h 55m 57s.xml">
       <configuration name="ParkingBoyTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParkingBoyTest - 2018.11.25 at 14h 02m 28s.xml">
+    <history-entry file="ParkingBoyTest - 2018.11.25 at 15h 56m 27s.xml">
       <configuration name="ParkingBoyTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParkingBoyTest - 2018.11.25 at 14h 03m 25s.xml">
-      <configuration name="ParkingBoyTest" configurationId="JUnit" />
+    <history-entry file="ParkingBoyTest_returnCorrectMessageWhenParkWithNoPosition - 2018.11.25 at 16h 06m 33s.xml">
+      <configuration name="ParkingBoyTest.returnCorrectMessageWhenParkWithNoPosition" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParkingBoyTest - 2018.11.25 at 14h 10m 29s.xml">
-      <configuration name="ParkingBoyTest" configurationId="JUnit" />
+    <history-entry file="ParkingBoyTest_returnCorrectMessageWhenParkWithNoPosition - 2018.11.25 at 16h 09m 14s.xml">
+      <configuration name="ParkingBoyTest.returnCorrectMessageWhenParkWithNoPosition" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ParkingBoyTest - 2018.11.25 at 14h 45m 52s.xml">
+    <history-entry file="ParkingBoyTest_returnCorrectMessageWhenParkWithNoPosition - 2018.11.25 at 16h 09m 40s.xml">
+      <configuration name="ParkingBoyTest.returnCorrectMessageWhenParkWithNoPosition" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ParkingBoyTest - 2018.11.25 at 16h 10m 05s.xml">
       <configuration name="ParkingBoyTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -324,7 +337,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32948583" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39937106" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39874083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3298731" />
@@ -389,20 +402,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ParkingTicket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-            <element signature="e#913#914#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Car.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -422,34 +421,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ParkingLot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="228">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
-            <element signature="e#475#476#0" expanded="true" />
             <element signature="e#508#509#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ParkingBoyTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ParkingTicket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-888">
-          <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        <state relative-caret-position="418">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#734#735#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
+            <element signature="e#886#887#0" expanded="true" />
+            <element signature="e#913#914#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ParkingBoy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="36" column="19" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+        <state relative-caret-position="418">
+          <caret line="57" column="39" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
           <folding>
             <element signature="e#699#700#0" expanded="true" />
             <element signature="e#734#735#0" expanded="true" />
             <element signature="e#881#882#0" expanded="true" />
             <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#1053#1054#0" expanded="true" />
+            <element signature="e#1087#1088#0" expanded="true" />
+            <element signature="e#1224#1225#0" expanded="true" />
+            <element signature="e#1257#1258#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ParkingBoyTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2641">
+          <caret line="139" column="45" selection-start-line="139" selection-start-column="45" selection-end-line="139" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

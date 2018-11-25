@@ -8,6 +8,9 @@ public class ParkingBoy {
     private ParkingTicket ticketOnHand;
     //Ticket generated after car parked / Ticket received and request to fetch a car
 
+    private String fetchStatus;
+    private String parkStatus;
+
     public ParkingBoy(){
         ArrayList<ParkingTicket> parkingTicketList = new ArrayList<>();
         this.ownedParkingLot = new ParkingLot(20, parkingTicketList, 0);
@@ -30,10 +33,19 @@ public class ParkingBoy {
         return ticketOnHand;
     }
 
+    public String getFetchStatus() {
+        return fetchStatus;
+    }
+
+    public String getParkStatus() {
+        return parkStatus;
+    }
+
     public void park(Car car){
         carInControl = car;
         if (ownedParkingLot.getCapacity() <= ownedParkingLot.getSpaceOccupied()){
             System.out.println("No space in parking lot. Park failure.");
+            parkStatus = "Not enough position.";
             return;
         } else if (ownedParkingLot.getCapacity() > ownedParkingLot.getSpaceOccupied()){
             ParkingTicket newTicket = new ParkingTicket(carInControl,ownedParkingLot, "new");
@@ -43,6 +55,7 @@ public class ParkingBoy {
             carInControl = null;
             System.out.println("Car parked.");
             ticketOnHand = newTicket;
+            parkStatus = "Car parked.";
             return;
         }
     }
@@ -57,9 +70,16 @@ public class ParkingBoy {
             return;
         } else if (ticketOnHand.getTicketStatus() == "used"){
             System.out.println("Ticket already used.");
+            fetchStatus = "Unrecognized parking ticket.";
             return;
         }
         ticketOnHand.updateTicketStatus("invalid");
         System.out.println("Ticket invalid.");
+    }
+
+    public void fetch(){
+        System.out.println("Please provide your parking ticket.");
+        fetchStatus = "Please provide your parking ticket.";
+        return;
     }
 }
