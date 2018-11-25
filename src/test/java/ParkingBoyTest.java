@@ -20,7 +20,8 @@ public class ParkingBoyTest {
         //AC1: Given a parkingBoy and a car to be parked, when park, then return new parkingTicket
 
         setUpTestforStory1();
-        expectedParkingTicket = expectedParkingBoy.park(expectedCar);
+        expectedParkingBoy.park(expectedCar);
+        expectedParkingTicket = expectedParkingBoy.getTicketOnHand();
 
         ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"new");
 
@@ -38,10 +39,12 @@ public class ParkingBoyTest {
         //AC1: Given parked car, right parkingTicket and parkingBoy, when fetch, then return right car
 
         setUpTestforStory1();
-        expectedParkingTicket = expectedParkingBoy.park(expectedCar);
+        expectedParkingBoy.park(expectedCar);
+        expectedParkingTicket = expectedParkingBoy.getTicketOnHand();
 
         ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"new");
-        Car car = expectedParkingBoy.fetch(parkingTicket);
+        expectedParkingBoy.fetch(parkingTicket);
+        Car car = expectedParkingBoy.getCarInControl();
 
 //        System.out.println(expectedCar.getParkingTicket().getCar());
 //        System.out.println(expectedCar.getParkingTicket().getParkingLot());
@@ -54,39 +57,40 @@ public class ParkingBoyTest {
 
     @Test
     public void invalidFetch(){
-        //AC3: Given parkingBoy and invalid ticket, when fetch, then return error message, the ticket will be confirmed as invalid ticket, and return null car
+        //AC3: Given parkingBoy and invalid ticket, when fetch, then return error message, the ticket will be confirmed as invalid ticket,  and no car can be fetched and in control by parkingBoy
         setUpTestforStory1();
 
         ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"new");
-        Car nullCar = expectedParkingBoy.fetch(parkingTicket);
+        expectedParkingBoy.fetch(parkingTicket);
+        Car nullCar = expectedParkingBoy.getCarInControl();
 
         assertEquals("invalid",parkingTicket.getTicketStatus());
-        assertNull(nullCar.getParkingTicket());
+        assertNull(nullCar);
     }
 
     @Test
     public void fetchWithUsedTicket(){
-        // AC4: Given parkingBoy and used ticket, when fetch, then return error message, and null car
+        // AC4: Given parkingBoy and used ticket, when fetch, then return error message, and no car can be fetched and in control by parkingBoy
 
         setUpTestforStory1();
 
         ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"used");
-        Car nullCar = expectedParkingBoy.fetch(parkingTicket);
+        expectedParkingBoy.fetch(parkingTicket);
+        Car nullCar = expectedParkingBoy.getCarInControl();
 
         assertEquals("used",parkingTicket.getTicketStatus());
-        assertNull(nullCar.getParkingTicket());
+        assertNull(nullCar);
     }
 
     @Test
     public void parkWhenParkingLotFulled(){
-        //AC5: Given parkingLot with 0 space, when park, then return error message, the return parkingTicket is valid
+        //AC5: Given parkingLot with 0 space, when park, then return error message, no ticket return from parkingBoy's hand
         expectedCar = new Car();
         expectedParkingBoy = new ParkingBoy(20,20);
 
-        expectedParkingTicket = expectedParkingBoy.park(expectedCar);
+        expectedParkingBoy.park(expectedCar);
+        expectedParkingTicket = expectedParkingBoy.getTicketOnHand();
 
-        assertEquals("invalid",expectedParkingTicket.getTicketStatus());
-
+        assertNull(expectedParkingTicket);
     }
-    
 }

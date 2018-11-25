@@ -3,6 +3,10 @@ import java.util.*;
 public class ParkingBoy {
 
     private ParkingLot ownedParkingLot;
+    private Car carInControl;
+    //Car received to be parked / Car fetched
+    private ParkingTicket ticketOnHand;
+    //Ticket generated after car parked / Ticket received and request to fetch a car
 
     public ParkingBoy(){
         ArrayList<ParkingTicket> parkingTicketList = new ArrayList<>();
@@ -18,33 +22,44 @@ public class ParkingBoy {
         return ownedParkingLot;
     }
 
-    public ParkingTicket park(Car car){
-        if (ownedParkingLot.getCapacity() <= ownedParkingLot.getSpaceOccupied()){
-            System.out.println("No space in parking lot. Park failure.");
-        } else if (ownedParkingLot.getCapacity() > ownedParkingLot.getSpaceOccupied()){
-            ParkingTicket newTicket = new ParkingTicket(car,ownedParkingLot, "new");
-            ownedParkingLot.addTicketIntoList(newTicket);
-            ownedParkingLot.setSpaceOccupied(ownedParkingLot.getSpaceOccupied() + 1);
-            car.setParkingTicket(newTicket);
-            System.out.println("Car parked.");
-            return newTicket;
-        }
-        return new ParkingTicket(car, ownedParkingLot, "invalid");
+    public Car getCarInControl() {
+        return carInControl;
     }
 
-    public Car fetch(ParkingTicket parkingTicket){
-        if (ownedParkingLot.getTicketList().contains(parkingTicket) && parkingTicket.getTicketStatus() == "new" && parkingTicket.getCar().getParkingTicket().equals(parkingTicket)){
-            ownedParkingLot.setSpaceOccupied(ownedParkingLot.getSpaceOccupied() + 1);
-            ownedParkingLot.updateTicketStatus(parkingTicket,"used");
-            System.out.println("Car fetched.");
-            return parkingTicket.getCar();
-        } else if (parkingTicket.getTicketStatus() == "used"){
-            System.out.println("Ticket already used.");
-            return new Car();
-        }
-        parkingTicket.updateTicketStatus("invalid");
-        System.out.println("Ticket invalid.");
-        return new Car();
+    public ParkingTicket getTicketOnHand() {
+        return ticketOnHand;
+    }
 
+    public void park(Car car){
+        carInControl = car;
+        if (ownedParkingLot.getCapacity() <= ownedParkingLot.getSpaceOccupied()){
+            System.out.println("No space in parking lot. Park failure.");
+            return;
+        } else if (ownedParkingLot.getCapacity() > ownedParkingLot.getSpaceOccupied()){
+            ParkingTicket newTicket = new ParkingTicket(carInControl,ownedParkingLot, "new");
+            ownedParkingLot.addTicketIntoList(newTicket);
+            ownedParkingLot.setSpaceOccupied(ownedParkingLot.getSpaceOccupied() + 1);
+            carInControl.setParkingTicket(newTicket);
+            carInControl = null;
+            System.out.println("Car parked.");
+            ticketOnHand = newTicket;
+            return;
+        }
+    }
+
+    public void fetch(ParkingTicket parkingTicket){
+        ticketOnHand = parkingTicket;
+        if (ownedParkingLot.getTicketList().contains(ticketOnHand) && ticketOnHand.getTicketStatus() == "new" && ticketOnHand.getCar().getParkingTicket().equals(ticketOnHand)){
+            ownedParkingLot.setSpaceOccupied(ownedParkingLot.getSpaceOccupied() + 1);
+            ownedParkingLot.updateTicketStatus(ticketOnHand,"used");
+            System.out.println("Car fetched.");
+            carInControl = ticketOnHand.getCar();
+            return;
+        } else if (ticketOnHand.getTicketStatus() == "used"){
+            System.out.println("Ticket already used.");
+            return;
+        }
+        ticketOnHand.updateTicketStatus("invalid");
+        System.out.println("Ticket invalid.");
     }
 }
