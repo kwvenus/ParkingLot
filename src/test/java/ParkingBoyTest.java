@@ -10,6 +10,11 @@ public class ParkingBoyTest {
     Car expectedCar;
     ParkingBoy expectedParkingBoy;
     ParkingTicket expectedParkingTicket;
+    ArrayList<ParkingTicket> parkingTicketList = new ArrayList<>();
+    ArrayList<ParkingLot> parkingLotArrayList = new ArrayList<>();
+
+    ParkingLot parkingLot1 = new ParkingLot(20,parkingTicketList,20);
+    ParkingLot parkingLot2 = new ParkingLot(20,parkingTicketList,10);
 
 
     //##################### Story 1 #####################
@@ -19,6 +24,13 @@ public class ParkingBoyTest {
         expectedParkingBoy = new ParkingBoy();
     }
 
+    public void setUpTestforStory3(){
+
+        parkingLotArrayList.add(parkingLot1);
+        parkingLotArrayList.add(parkingLot2);
+
+        expectedCar = new Car();
+    }
     @Test
     public void park() {
         //AC1: Given a parkingBoy and a car to be parked, when park, then return new parkingTicket
@@ -146,16 +158,8 @@ public class ParkingBoyTest {
     @Test
     public void parktoSeondParkingLotWhenFirstParkingLotFulled(){
         //AC1: Given parkingBoy, car, parkingLotList with first lot fulled and second lot not fulled, when park, then car should be parked into second lot
-        ArrayList<ParkingTicket> parkingTicketList = new ArrayList<>();
 
-        ParkingLot parkingLot1 = new ParkingLot(20,parkingTicketList,20);
-        ParkingLot parkingLot2 = new ParkingLot(20,parkingTicketList,10);
-        ArrayList<ParkingLot> parkingLotArrayList = new ArrayList<>();
-
-        parkingLotArrayList.add(parkingLot1);
-        parkingLotArrayList.add(parkingLot2);
-
-        expectedCar = new Car();
+        setUpTestforStory3();
         expectedParkingBoy = new ParkingBoy(parkingLotArrayList);
 
         expectedParkingBoy.park(expectedCar);
@@ -165,4 +169,27 @@ public class ParkingBoyTest {
     }
 
     //##################### Story 3 #####################
+
+    //##################### Story 4 #####################
+
+    @Test
+    public void smartParkingBoy(){
+        //Given smart parkingBoy, car, parkingLot list with 2 parkingLot with different position left. When park, then should park to the parkingLot with more space (parkingLot2)
+
+        setUpTestforStory3();
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotArrayList);
+
+        parkingLot1 = new ParkingLot(20,parkingTicketList,15);
+        smartParkingBoy.park(expectedCar);
+        expectedParkingTicket = smartParkingBoy.getTicketOnHand();
+
+//        System.out.println(parkingLot2);
+//        System.out.println(parkingLot1);
+//        System.out.println(expectedParkingTicket.getParkingLot());
+
+        assertEquals(parkingLot2,expectedParkingTicket.getParkingLot());
+
+    }
+
+    //##################### Story 4 #####################
 }

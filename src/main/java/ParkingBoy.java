@@ -2,15 +2,15 @@ import java.util.*;
 
 public class ParkingBoy {
 
-    private ParkingLot ownedParkingLot;
-    private ArrayList<ParkingLot> ownedParkingLotList = new ArrayList<>();
-    private Car carInControl;
+    protected ParkingLot ownedParkingLot;
+    protected ArrayList<ParkingLot> ownedParkingLotList = new ArrayList<>();
+    protected Car carInControl;
     //Car received to be parked / Car fetched
-    private ParkingTicket ticketOnHand;
+    protected ParkingTicket ticketOnHand;
     //Ticket generated after car parked / Ticket received and request to fetch a car
 
-    private String fetchStatus;
-    private String parkStatus;
+    protected String fetchStatus;
+    protected String parkStatus;
 
     public ParkingBoy(){
         ArrayList<ParkingTicket> parkingTicketList = new ArrayList<>();
