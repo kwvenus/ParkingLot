@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -138,4 +140,29 @@ public class ParkingBoyTest {
 
     }
     //##################### Story 2 #####################
+
+    //##################### Story 3 #####################
+
+    @Test
+    public void parktoSeondParkingLotWhenFirstParkingLotFulled(){
+        //AC1: Given parkingBoy, car, parkingLotList with first lot fulled and second lot not fulled, when park, then car should be parked into second lot
+        ArrayList<ParkingTicket> parkingTicketList = new ArrayList<>();
+
+        ParkingLot parkingLot1 = new ParkingLot(20,parkingTicketList,20);
+        ParkingLot parkingLot2 = new ParkingLot(20,parkingTicketList,10);
+        ArrayList<ParkingLot> parkingLotArrayList = new ArrayList<>();
+
+        parkingLotArrayList.add(parkingLot1);
+        parkingLotArrayList.add(parkingLot2);
+
+        expectedCar = new Car();
+        expectedParkingBoy = new ParkingBoy(parkingLotArrayList);
+
+        expectedParkingBoy.park(expectedCar);
+        expectedParkingTicket = expectedParkingBoy.getTicketOnHand();
+
+        assertEquals(parkingLot2,expectedParkingTicket.getParkingLot());
+    }
+
+    //##################### Story 3 #####################
 }
