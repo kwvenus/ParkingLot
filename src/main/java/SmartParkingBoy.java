@@ -17,11 +17,15 @@ public class SmartParkingBoy extends ParkingBoy {
     public void park(Car car){
         carInControl = car;
         int maxSpaceLeft = 0;
-        ownedParkingLotList.forEach(parkingLot -> {
-            if ((parkingLot.getCapacity()-parkingLot.getSpaceOccupied())>maxSpaceLeft){
-                ownedParkingLot = parkingLot;
+        int spaceLeft;
+
+        for (int i = 0; i < ownedParkingLotList.size(); i++){
+            spaceLeft = ownedParkingLotList.get(i).getCapacity()-ownedParkingLotList.get(i).getSpaceOccupied();
+            if (spaceLeft > maxSpaceLeft) {
+                ownedParkingLot = ownedParkingLotList.get(i);
+                maxSpaceLeft = spaceLeft;
             }
-        });
+        }
 
         if (ownedParkingLot.getCapacity() <= ownedParkingLot.getSpaceOccupied()){
             System.out.println("No space in parking lot. Park failure.");

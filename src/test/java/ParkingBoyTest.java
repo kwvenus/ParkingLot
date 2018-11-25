@@ -13,24 +13,25 @@ public class ParkingBoyTest {
     ArrayList<ParkingTicket> parkingTicketList = new ArrayList<>();
     ArrayList<ParkingLot> parkingLotArrayList = new ArrayList<>();
 
-    ParkingLot parkingLot1 = new ParkingLot(20,parkingTicketList,20);
-    ParkingLot parkingLot2 = new ParkingLot(20,parkingTicketList,10);
+    ParkingLot parkingLot1 = new ParkingLot(20, parkingTicketList, 20);
+    ParkingLot parkingLot2 = new ParkingLot(20, parkingTicketList, 10);
 
 
     //##################### Story 1 #####################
 
-    public void setUpTestforStory1(){
+    public void setUpTestforStory1() {
         expectedCar = new Car();
         expectedParkingBoy = new ParkingBoy();
     }
 
-    public void setUpTestforStory3(){
+    public void setUpTestforStory3() {
 
         parkingLotArrayList.add(parkingLot1);
         parkingLotArrayList.add(parkingLot2);
 
         expectedCar = new Car();
     }
+
     @Test
     public void park() {
         //AC1: Given a parkingBoy and a car to be parked, when park, then return new parkingTicket
@@ -39,7 +40,7 @@ public class ParkingBoyTest {
         expectedParkingBoy.park(expectedCar);
         expectedParkingTicket = expectedParkingBoy.getTicketOnHand();
 
-        ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"new");
+        ParkingTicket parkingTicket = new ParkingTicket(expectedCar, expectedParkingBoy.getOwnedParkingLot(), "new");
 
 //        System.out.println(expectedParkingTicket.getCar());
 //        System.out.println(expectedParkingTicket.getParkingLot());
@@ -47,7 +48,7 @@ public class ParkingBoyTest {
 //        System.out.println(parkingTicket.getCar());
 //        System.out.println(parkingTicket.getParkingLot());
 //        System.out.println(parkingTicket.getTicketStatus());
-        assertEquals(expectedParkingTicket,parkingTicket);
+        assertEquals(expectedParkingTicket, parkingTicket);
     }
 
     @Test
@@ -58,7 +59,7 @@ public class ParkingBoyTest {
         expectedParkingBoy.park(expectedCar);
         expectedParkingTicket = expectedParkingBoy.getTicketOnHand();
 
-        ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"new");
+        ParkingTicket parkingTicket = new ParkingTicket(expectedCar, expectedParkingBoy.getOwnedParkingLot(), "new");
         expectedParkingBoy.fetch(parkingTicket);
         Car car = expectedParkingBoy.getCarInControl();
 
@@ -68,41 +69,41 @@ public class ParkingBoyTest {
 //        System.out.println(car.getParkingTicket().getCar());
 //        System.out.println(car.getParkingTicket().getParkingLot());
 //        System.out.println(car.getParkingTicket().getTicketStatus());
-        assertEquals(expectedCar.getParkingTicket(),car.getParkingTicket());
+        assertEquals(expectedCar.getParkingTicket(), car.getParkingTicket());
     }
 
     @Test
-    public void invalidFetch(){
+    public void invalidFetch() {
         //AC3: Given parkingBoy and invalid ticket, when fetch, then return error message, the ticket will be confirmed as invalid ticket,  and no car can be fetched and in control by parkingBoy
         setUpTestforStory1();
 
-        ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"new");
+        ParkingTicket parkingTicket = new ParkingTicket(expectedCar, expectedParkingBoy.getOwnedParkingLot(), "new");
         expectedParkingBoy.fetch(parkingTicket);
         Car nullCar = expectedParkingBoy.getCarInControl();
 
-        assertEquals("invalid",parkingTicket.getTicketStatus());
+        assertEquals("invalid", parkingTicket.getTicketStatus());
         assertNull(nullCar);
     }
 
     @Test
-    public void fetchWithUsedTicket(){
+    public void fetchWithUsedTicket() {
         // AC4: Given parkingBoy and used ticket, when fetch, then return error message, and no car can be fetched and in control by parkingBoy
 
         setUpTestforStory1();
 
-        ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"used");
+        ParkingTicket parkingTicket = new ParkingTicket(expectedCar, expectedParkingBoy.getOwnedParkingLot(), "used");
         expectedParkingBoy.fetch(parkingTicket);
         Car nullCar = expectedParkingBoy.getCarInControl();
 
-        assertEquals("used",parkingTicket.getTicketStatus());
+        assertEquals("used", parkingTicket.getTicketStatus());
         assertNull(nullCar);
     }
 
     @Test
-    public void parkWhenParkingLotFulled(){
+    public void parkWhenParkingLotFulled() {
         //AC5: Given parkingLot with 0 space, when park, then return error message, no ticket return from parkingBoy's hand
         expectedCar = new Car();
-        expectedParkingBoy = new ParkingBoy(20,20);
+        expectedParkingBoy = new ParkingBoy(20, 20);
 
         expectedParkingBoy.park(expectedCar);
         expectedParkingTicket = expectedParkingBoy.getTicketOnHand();
@@ -115,40 +116,40 @@ public class ParkingBoyTest {
     //##################### Story 2 #####################
 
     @Test
-    public void returnCorrectMessgaeWhenFetchWithWrongTicket(){
+    public void returnCorrectMessgaeWhenFetchWithWrongTicket() {
         //AC1: Given parkingBoy, used ticket, when fetch, then return "Unrecognized parking ticket."
         setUpTestforStory1();
 
-        ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"used");
+        ParkingTicket parkingTicket = new ParkingTicket(expectedCar, expectedParkingBoy.getOwnedParkingLot(), "used");
         expectedParkingBoy.fetch(parkingTicket);
 
-        assertEquals("Unrecognized parking ticket.",expectedParkingBoy.getFetchStatus());
+        assertEquals("Unrecognized parking ticket.", expectedParkingBoy.getFetchStatus());
 
     }
 
     @Test
-    public void returnCorrectMessgaeWhenFetchWithNoTicket(){
+    public void returnCorrectMessgaeWhenFetchWithNoTicket() {
         //AC2: Given parkingBoy, when fetch, then return "Unrecognized parking ticket."
         setUpTestforStory1();
 
-        ParkingTicket parkingTicket = new ParkingTicket(expectedCar,expectedParkingBoy.getOwnedParkingLot(),"used");
+        ParkingTicket parkingTicket = new ParkingTicket(expectedCar, expectedParkingBoy.getOwnedParkingLot(), "used");
         expectedParkingBoy.fetch();
 
-        assertEquals("Please provide your parking ticket.",expectedParkingBoy.getFetchStatus());
+        assertEquals("Please provide your parking ticket.", expectedParkingBoy.getFetchStatus());
 
     }
 
     @Test
-    public void returnCorrectMessageWhenParkWithNoPosition(){
+    public void returnCorrectMessageWhenParkWithNoPosition() {
         //AC3: Given parkingBoy, car, parkingLot with no position, when park, then return "Not enough position."
         setUpTestforStory1();
 
         expectedCar = new Car();
-        expectedParkingBoy = new ParkingBoy(20,20);
+        expectedParkingBoy = new ParkingBoy(20, 20);
 
         expectedParkingBoy.park(expectedCar);
 
-        assertEquals("Not enough position.",expectedParkingBoy.getParkStatus());
+        assertEquals("Not enough position.", expectedParkingBoy.getParkStatus());
 
     }
     //##################### Story 2 #####################
@@ -156,7 +157,7 @@ public class ParkingBoyTest {
     //##################### Story 3 #####################
 
     @Test
-    public void parktoSeondParkingLotWhenFirstParkingLotFulled(){
+    public void parktoSeondParkingLotWhenFirstParkingLotFulled() {
         //AC1: Given parkingBoy, car, parkingLotList with first lot fulled and second lot not fulled, when park, then car should be parked into second lot
 
         setUpTestforStory3();
@@ -165,7 +166,7 @@ public class ParkingBoyTest {
         expectedParkingBoy.park(expectedCar);
         expectedParkingTicket = expectedParkingBoy.getTicketOnHand();
 
-        assertEquals(parkingLot2,expectedParkingTicket.getParkingLot());
+        assertEquals(parkingLot2, expectedParkingTicket.getParkingLot());
     }
 
     //##################### Story 3 #####################
@@ -173,21 +174,21 @@ public class ParkingBoyTest {
     //##################### Story 4 #####################
 
     @Test
-    public void smartParkingBoy(){
+    public void smartParkingBoy() {
         //Given smart parkingBoy, car, parkingLot list with 2 parkingLot with different position left. When park, then should park to the parkingLot with more space (parkingLot2)
 
+        parkingLot1 = new ParkingLot(20, parkingTicketList, 15);
         setUpTestforStory3();
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotArrayList);
 
-        parkingLot1 = new ParkingLot(20,parkingTicketList,15);
         smartParkingBoy.park(expectedCar);
         expectedParkingTicket = smartParkingBoy.getTicketOnHand();
 
-//        System.out.println(parkingLot2);
-//        System.out.println(parkingLot1);
-//        System.out.println(expectedParkingTicket.getParkingLot());
+        System.out.println(parkingLot2);
+        System.out.println(parkingLot1);
+        System.out.println(expectedParkingTicket.getParkingLot());
 
-        assertEquals(parkingLot2,expectedParkingTicket.getParkingLot());
+        assertEquals(parkingLot2, expectedParkingTicket.getParkingLot());
 
     }
 
