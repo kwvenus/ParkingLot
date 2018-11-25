@@ -193,4 +193,28 @@ public class ParkingBoyTest {
     }
 
     //##################### Story 4 #####################
+
+    //##################### Story 5 #####################
+
+    @Test
+    public void superSmartParkingBoy(){
+
+        //Given super smart parkingBoy, car, parkingLot list with 2 parkingLot with different position left. When park, then should park to the parkingLot with the highest position rate (parkingLot1)
+        parkingLot1 = new ParkingLot(30, parkingTicketList, 15);
+        parkingLot2 = new ParkingLot(20, parkingTicketList, 15);
+        setUpTestforStory3();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLotArrayList);
+
+        superSmartParkingBoy.park(expectedCar);
+        expectedParkingTicket = superSmartParkingBoy.getTicketOnHand();
+
+//        System.out.println(parkingLot2);
+//        System.out.println(parkingLot1);
+//        System.out.println(expectedParkingTicket.getParkingLot());
+
+        assertEquals(parkingLot1, expectedParkingTicket.getParkingLot());
+
+    }
+
+    //##################### Story 5 #####################
 }
